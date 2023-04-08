@@ -17,26 +17,11 @@ public class RegisterItem {
     public static void handleItem(RegistryEvent.Register<Item> event)
     {
         //vanilla tab
-        event.getRegistry().register(new Item().setRegistryName("test3").setCreativeTab(CreativeTabs.MISC));
+        event.getRegistry().register(new Item().setRegistryName("test3").setCreativeTab(CreativeTabs.BREWING));
+        event.getRegistry().register(new Item().setRegistryName("test4").setCreativeTab(ModTabs.TAB1));
 
-        //custom tab
-        event.getRegistry().register(new Item().setRegistryName("test4").setCreativeTab(WRONG));
+
     }
-    public static final CreativeTabs CORRECT = new CreativeTabs(CreativeTabs.getNextID(), "newTab2")
-    {
-        @SideOnly(Side.CLIENT)
-        public ItemStack getTabIconItem()
-        {
-            return new ItemStack(Items.NETHER_STAR);
-        }
-    };
 
-    public static final CreativeTabs WRONG = new CreativeTabs(0, "newTab")
-    {
-        @SideOnly(Side.CLIENT)
-        public ItemStack getTabIconItem()
-        {
-            return new ItemStack(Items.NETHER_STAR);
-        }
-    };
+
 }
