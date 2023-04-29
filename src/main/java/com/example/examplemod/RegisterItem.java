@@ -26,7 +26,8 @@ public class RegisterItem {
     public static final ItemBowBase BOW_2 = new ItemBowBase("bow2");
     public static final ItemBowBase BOW_3 = new ItemBowBase("bow3");
     public static final ItemBowBase BOW_4 = new ItemBowBase("bow4");
-
+    public static final ItemBowBase BOW_5 = new ItemBowBase("bow5");
+    
     @SubscribeEvent
     public static void handleItem(RegistryEvent.Register<Item> event)
     {
