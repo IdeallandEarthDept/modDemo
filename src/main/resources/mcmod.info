@@ -1,8 +1,8 @@
 [
 {
-  "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
+  "modid": "teaching",
+  "name": "DeepLake Teaching",
+  "description": "This is for a tutorial",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
