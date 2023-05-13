@@ -1,4 +1,4 @@
-package com.example.examplemod.blocks;
+package com.example.examplemod.items;
 
 import com.example.examplemod.ModTabs;
 import com.example.examplemod.RegisterUtil;

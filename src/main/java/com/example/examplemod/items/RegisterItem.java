@@ -1,4 +1,4 @@
-package com.example.examplemod.blocks;
+package com.example.examplemod.items;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
