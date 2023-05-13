@@ -1,5 +1,6 @@
 package com.example.examplemod;
 
+import com.example.examplemod.blocks.RegisterItem;
 import net.minecraft.item.Item;
 
 public class RegisterUtil {

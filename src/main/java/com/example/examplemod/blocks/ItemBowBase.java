@@ -1,5 +1,7 @@
-package com.example.examplemod;
+package com.example.examplemod.blocks;
 
+import com.example.examplemod.ModTabs;
+import com.example.examplemod.RegisterUtil;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBow;
 
