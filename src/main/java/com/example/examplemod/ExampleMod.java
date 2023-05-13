@@ -1,6 +1,10 @@
 package com.example.examplemod;
 
+import com.example.examplemod.biomes.BiomeBase;
 import net.minecraft.init.Blocks;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeOcean;
+import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
