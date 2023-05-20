@@ -17,6 +17,7 @@ public class RegisterBlocks {
 
     public static final Block BLOCK_1 = new BlockBase("block_1",Material.ROCK);
     public static final Block BLOCK_2 = new BlockBase("block_2",Material.ROCK).setLightLevel(1.0f);
+    public static final Block BLOCK_LADDER = new BlockLadderCustom();
 
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event)
