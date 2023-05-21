@@ -1,6 +1,7 @@
 package com.example.examplemod.gpt;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockDoor;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -14,6 +15,10 @@ public class HouseBuilder {
 
         // 木板方块
         Block plankBlock = Blocks.PLANKS;
+        // 玻璃方块
+        Block glassBlock = Blocks.GLASS;
+        // 木门方块
+        Block doorBlock = Blocks.OAK_DOOR;
 
         // 构建地面
         for (int i = x - width / 2; i <= x + width / 2; i++) {
@@ -40,5 +45,23 @@ public class HouseBuilder {
                 world.setBlockState(new BlockPos(i, y + height + 1, j), plankBlock.getDefaultState());
             }
         }
+
+
+        // 添加窗户
+        for (int i = y + 2; i <= y + 3; i++) {
+            world.setBlockState(new BlockPos(x - width / 2, i, z), glassBlock.getDefaultState());
+            world.setBlockState(new BlockPos(x + width / 2, i, z), glassBlock.getDefaultState());
+        }
+        for (int j = x - width / 2 + 1; j <= x + width / 2 - 1; j++) {
+            world.setBlockState(new BlockPos(j, y + 2, z - depth / 2), glassBlock.getDefaultState());
+            world.setBlockState(new BlockPos(j, y + 3, z - depth / 2), glassBlock.getDefaultState());
+            world.setBlockState(new BlockPos(j, y + 2, z + depth / 2), glassBlock.getDefaultState());
+            world.setBlockState(new BlockPos(j, y + 3, z + depth / 2), glassBlock.getDefaultState());
+        }
+
+        // 添加门
+        world.setBlockState(new BlockPos(x, y + 1, z - depth / 2), doorBlock.getDefaultState());
+        world.setBlockState(new BlockPos(x, y + 2, z - depth / 2), doorBlock.getDefaultState().withProperty(BlockDoor.HALF, BlockDoor.EnumDoorHalf.UPPER));
+
     }
 }
