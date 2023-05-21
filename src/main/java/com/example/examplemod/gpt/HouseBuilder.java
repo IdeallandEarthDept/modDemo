@@ -59,6 +59,12 @@ public class HouseBuilder {
                         } else if (j == x + roofWidth / 2) {
                             world.setBlockState(new BlockPos(j, i, k), stairBlock.getDefaultState().withProperty(BlockStairs.FACING, EnumFacing.WEST));
                         }
+                    } else if (i == y + height + 3) {
+                        if (j > x - roofWidth / 2 && j < x + roofWidth / 2 && k > z - roofDepth / 2 && k < z + roofDepth / 2) {
+                            world.setBlockState(new BlockPos(j, i, k), stairBlock.getDefaultState().withProperty(BlockStairs.FACING, EnumFacing.UP));
+                        } else {
+                            world.setBlockState(new BlockPos(j, i, k), plankBlock.getDefaultState());
+                        }
                     } else {
                         world.setBlockState(new BlockPos(j, i, k), plankBlock.getDefaultState());
                     }
