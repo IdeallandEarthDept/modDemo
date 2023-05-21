@@ -3,6 +3,7 @@ package com.example.examplemod.gpt;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDoor;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -46,7 +47,6 @@ public class HouseBuilder {
             }
         }
 
-
         // 添加窗户
         for (int i = y + 2; i <= y + 3; i++) {
             world.setBlockState(new BlockPos(x - width / 2, i, z), glassBlock.getDefaultState());
@@ -60,8 +60,10 @@ public class HouseBuilder {
         }
 
         // 添加门
-        world.setBlockState(new BlockPos(x, y + 1, z - depth / 2), doorBlock.getDefaultState());
-        world.setBlockState(new BlockPos(x, y + 2, z - depth / 2), doorBlock.getDefaultState().withProperty(BlockDoor.HALF, BlockDoor.EnumDoorHalf.UPPER));
-
+        BlockDoor.EnumDoorHalf upperHalf = BlockDoor.EnumDoorHalf.UPPER;
+        world.setBlockState(new BlockPos(x, y + 1, z - depth / 2), Blocks.AIR.getDefaultState());
+        world.setBlockState(new BlockPos(x, y + 2, z - depth / 2), Blocks.AIR.getDefaultState());
+        world.setBlockState(new BlockPos(x, y + 1, z - depth / 2), doorBlock.getDefaultState().withProperty(BlockDoor.FACING, EnumFacing.NORTH).withProperty(BlockDoor.HALF, BlockDoor.EnumDoorHalf.LOWER));
+        world.setBlockState(new BlockPos(x, y + 2, z - depth / 2), doorBlock.getDefaultState().withProperty(BlockDoor.FACING, EnumFacing.NORTH).withProperty(BlockDoor.HALF, upperHalf));
     }
 }
