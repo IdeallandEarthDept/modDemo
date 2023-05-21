@@ -17,10 +17,8 @@ import java.util.List;
 public class RegisterItem {
     public static final List<Item> ITEM_LIST = new ArrayList<>();
 //    public static final ItemBow BOW_1 = (ItemBow) new ItemBow().setRegistryName("bow1").setCreativeTab(ModTabs.TAB1).setUnlocalizedName("bow1");
-    public static final ItemBowBase BOW_2 = new ItemBowBase("bow2");
-    public static final ItemBowBase BOW_3 = new ItemBowBase("bow3");
-    public static final ItemBowBase BOW_4 = new ItemBowBase("bow4");
-    public static final ItemBowBase BOW_5 = new ItemBowBase("bow5");
+    public static final ItemBase ITEM_1 = new ItemBase("item_1");
+    public static final ItemBuildHouse BUILD_HOUSE_1 = new ItemBuildHouse("item_build_1");
     
     @SubscribeEvent
     public static void handleItem(RegistryEvent.Register<Item> event)

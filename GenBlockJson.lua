@@ -1,0 +1,99 @@
+local outFile = nil;
+local modName = "teaching";
+local blockName = "grid_normal";
+
+local function GenModelBlockItem()
+	local path = string.format("src\\main\\resources\\assets\\%s\\models\\item\\%s.json", modName, blockName);
+	outFile = io.open(path,"w");
+	outFile:write('{\n');
+	local content = string.format("\t\"parent\": \"%s:block/%s\"\n", modName,blockName );
+	outFile:write(content);
+	outFile:write('}\n');
+	outFile:close();
+end
+
+local function GenModelBlock()
+	local path = string.format("src\\main\\resources\\assets\\%s\\models\\block\\%s.json", modName, blockName);
+	outFile = io.open(path,"w");
+	outFile:write('{\n');
+	outFile:write('\t\"parent\": \"block/cube_all\",\n');
+	outFile:write('\t\"textures\": {\n');
+	local content = string.format("\t\t\"all\": \"%s:blocks/%s\"\n", modName,blockName );
+	outFile:write(content);
+	outFile:write('\t}\n');
+	outFile:write('}\n');
+	outFile:close();
+end
+
+local function GenBlockState()
+	local path = string.format("src\\main\\resources\\assets\\%s\\blockstates\\%s.json", modName, blockName);
+	outFile = io.open(path,"w");
+	outFile:write('{\n');
+	outFile:write('\t\"variants\": {\n');
+	local content = string.format("\t\t\"normal\": { \"model\": \"%s:%s\" }\n", modName,blockName );
+	outFile:write(content);
+	outFile:write('\t}\n');
+	outFile:write('}\n');
+	outFile:close();
+end
+
+local function GenBlock(_blockName)
+	blockName = _blockName;
+	print("Creating:"..blockName)
+	GenModelBlockItem();
+	GenModelBlock();
+	GenBlockState();
+end
+
+
+
+
+local function GenItem(_typeName, _itemName)
+	print("Creating:".._typeName.." ".._itemName)
+	local path = string.format("src\\main\\resources\\assets\\%s\\models\\item\\%s.json", modName, _itemName);
+	outFile = io.open(path,"w");
+
+	local content = string.format('{"parent": "item/handheld","textures": {"layer0":"%s:items/%s/%s"}}\n', modName, _typeName, _itemName );
+	outFile:write(content);
+
+	outFile:close();
+end
+
+--for i = 0, 8 do
+--	GenItem("artifact", "artf_xp_bottle_"..i);
+--end
+
+--GenItem("artifact", "gladiator_chest");
+--GenItem("artifact", "gladiator_foot");
+--GenItem("artifact", "gladiator_head");
+--GenItem("artifact", "gladiator_leg");
+
+--GenItem("weapon", "fire_club");
+
+
+-- GenBlock("zl_pillar_deco");
+
+GenItem("skill", "keqing_e_1");
+GenItem("skill", "keqing_e_2");
+-- GenItem("misc", "package_fade_armor_diamond");
+-- for i = 0,8 do
+-- 	GenItem("misc", "attr_report_"..i);
+-- end
+-- for i = 0,8 do
+-- 	GenItem("misc", "weapon_stone_"..i);
+-- end
+
+-- for i = 1,4 do 
+-- 	GenItem("misc", "mor_armor_"..i);
+-- end
+--GenBlock("builder_farm_sin");
+--GenBlock("de_water_orb");
+
+--GenItem("misc", "water_extractor")
+--GenItem("misc", "disturb_measure")
+--GenItem("skill", "skill_radar_creature")
+-- GenItem("skill", "clone_block")
+
+-- for i = 1,4 do 
+-- 	GenItem("armor", "l_m_armor_" .. i)
+-- end
