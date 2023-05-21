@@ -2,6 +2,7 @@ package com.example.examplemod.gpt;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDoor;
+import net.minecraft.block.BlockStairs;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
@@ -20,6 +21,8 @@ public class HouseBuilder {
         Block glassBlock = Blocks.GLASS;
         // 木门方块
         Block doorBlock = Blocks.OAK_DOOR;
+        // 楼梯方块
+        Block stairBlock = Blocks.OAK_STAIRS;
 
         // 构建地面
         for (int i = x - width / 2; i <= x + width / 2; i++) {
@@ -41,9 +44,25 @@ public class HouseBuilder {
         }
 
         // 构建屋顶
-        for (int i = x - width / 2; i <= x + width / 2; i++) {
-            for (int j = z - depth / 2; j <= z + depth / 2; j++) {
-                world.setBlockState(new BlockPos(i, y + height + 1, j), plankBlock.getDefaultState());
+        for (int i = y + height + 1; i <= y + height + 3; i++) {
+            int roofWidth = width - 2 * (i - (y + height + 1));
+            int roofDepth = depth - 2 * (i - (y + height + 1));
+            for (int j = x - roofWidth / 2; j <= x + roofWidth / 2; j++) {
+                for (int k = z - roofDepth / 2; k <= z + roofDepth / 2; k++) {
+                    if (j == x - roofWidth / 2 || j == x + roofWidth / 2 || k == z - roofDepth / 2 || k == z + roofDepth / 2) {
+                        if ((j == x - roofWidth / 2 && k == z - roofDepth / 2) || (j == x + roofWidth / 2 && k == z + roofDepth / 2)) {
+                            world.setBlockState(new BlockPos(j, i, k), stairBlock.getDefaultState().withProperty(BlockStairs.FACING, EnumFacing.NORTH));
+                        } else if ((j == x + roofWidth / 2 && k == z - roofDepth / 2) || (j == x - roofWidth / 2 && k == z + roofDepth / 2)) {
+                            world.setBlockState(new BlockPos(j, i, k), stairBlock.getDefaultState().withProperty(BlockStairs.FACING, EnumFacing.SOUTH));
+                        } else if (j == x - roofWidth / 2) {
+                            world.setBlockState(new BlockPos(j, i, k), stairBlock.getDefaultState().withProperty(BlockStairs.FACING, EnumFacing.EAST));
+                        } else if (j == x + roofWidth / 2) {
+                            world.setBlockState(new BlockPos(j, i, k), stairBlock.getDefaultState().withProperty(BlockStairs.FACING, EnumFacing.WEST));
+                        }
+                    } else {
+                        world.setBlockState(new BlockPos(j, i, k), plankBlock.getDefaultState());
+                    }
+                }
             }
         }
 
