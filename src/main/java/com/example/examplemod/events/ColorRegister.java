@@ -26,13 +26,28 @@ public class ColorRegister {
 
     @SubscribeEvent
     @SideOnly(Side.CLIENT)
-    public static void registerColor(ColorHandlerEvent.Block event) {
-        event.getBlockColors().registerBlockColorHandler(new IBlockColor() {
-            public int colorMultiplier(IBlockState state, @Nullable IBlockAccess worldIn, @Nullable BlockPos pos, int tintIndex) {
-                return worldIn != null && pos != null ? BiomeColorHelper.getFoliageColorAtPos(worldIn, pos) : ColorizerFoliage.getFoliageColorBasic();
-            }
-        }, RegisterBlocks.BLOCK_1);
+    public static void registerBlockColor1(ColorHandlerEvent.Block event)
+    {
+        event.getBlockColors().registerBlockColorHandler(
+                new IBlockColor() {
+                    @Override
+                    public int colorMultiplier(IBlockState state, @Nullable IBlockAccess worldIn, @Nullable BlockPos pos, int tintIndex) {
+                        return worldIn != null && pos != null ? BiomeColorHelper.getFoliageColorAtPos(worldIn, pos) : ColorizerFoliage.getFoliageColorBasic();
+                    }
+                }
+                ,RegisterBlocks.BLOCK_1,RegisterBlocks.BLOCK_2
+        );
     }
+
+//    @SubscribeEvent
+//    @SideOnly(Side.CLIENT)
+//    public static void registerColor(ColorHandlerEvent.Block event) {
+//        event.getBlockColors().registerBlockColorHandler(new IBlockColor() {
+//            public int colorMultiplier(IBlockState state, @Nullable IBlockAccess worldIn, @Nullable BlockPos pos, int tintIndex) {
+//                return worldIn != null && pos != null ? BiomeColorHelper.getFoliageColorAtPos(worldIn, pos) : ColorizerFoliage.getFoliageColorBasic();
+//            }
+//        }, RegisterBlocks.BLOCK_1);
+//    }
 
 //    public static int getLeavesColorForPos(ChunkCache world, BlockPos pos)
 //    {
